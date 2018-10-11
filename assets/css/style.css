@@ -5,5 +5,7 @@ input {
     margin: 10px;
 }
 
-
+body {
+    background: url("../image/puppy.jpg");
+}
 
