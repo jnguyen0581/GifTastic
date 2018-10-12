@@ -1,50 +1,43 @@
 
-$(function () {
-    console.log("page loaded");
-})
+var dogs = ["German Shepherd", "Labrador Retriever", "Schnauzer"];
 
-var breeds = ["German Shepherd", "Labrador Retriever", "Schnauzer", "Pug", "Golden Retriever"];
-
-// function displayBreedInfo(){
-//     var breedName = $(this).attr("data-name");
-//     alert(breedName);
-// }
+function displayDogInfo() {
+    var dog = $(this).attr("data-name");
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q= + dog + api_key=SwA3d1i26PVpc3LKmwuGOXar64zMN5uE&limit=10";
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+        var dogDiv = $("<div class='dog'>");
+        var rating = response.Rated;
+        var p = $("<p>").text("Rating: " + rating);
+        dogDiv.append(p);
+        var imgURL = response.Poster;
+        var image = $("<img>").attr("src", imgURL);
+        dogDiv.append(image);
+        $("#dogs-view").append(dogDiv);
+    });
+}
 
 function renderButtons() {
-    $("#buttons").empty();
-    for (var i = 0; i < breeds.length; i++) {
+    $("#dogs-view").empty();
+    for (var i = 0; i < dogs.length; i++) {
         var a = $("<button>");
-        a.addClass("breed");
-        a.attr("data-name", breeds[i]);
-        a.text(breeds[i]);
-        $("#buttons-view").append(a);
-
+        a.attr("data-name", dogs[i]);
+        a.text(dogs[i]);
+        $("#gifs-appear-here").append(a);
     }
 }
-//Add dog breed function
-$("add-breed").on("click", function(event){
-    event.preventDefault();
-    var breed = $("#breed-input").val().trim();
-    breeds.push(breed);
 
-  renderButtons();
+$("#add-dog").on("click", function (event) {
+    event.preventDefault();
+    var dog = $("#dog-input").val().trim();
+    dogs.push(dog);
+    renderButtons();
 });
 
-
-$(document).on("click", ".breed", alertBreedName);
-
-// Calling renderButtons which handles the processing of array
-renderButtons()
-
-
-
-
-
-
-// function displayBreedName() {
-//     var breed = $(this).attr("data-name");
-//     var queryURL = "https://api.giphy.com/v1/gifs/random?api_key=SwA3d1i26PVpc3LKmwuGOXar64zMN5uE=dogs";
-
+$(document).on("click", ".dog-btn", displayDogInfo);
+renderButtons();
 
 
 
