@@ -2,10 +2,32 @@ button,
 div,
 form,
 input {
-    margin: 10px;
+    margin: 20px;
 }
 
 body {
     background: url("../image/puppy.jpg");
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif; 
 }
+
+form {
+width: 30%;
+float: right;
+padding: 75px;
+}
+
+label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+input [type="text"]{
+    width: 100%;
+    margin-bottom: 10px;
+    height: 30px;
+    font-size: 15px;
+}
+
 
