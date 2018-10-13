@@ -34,6 +34,8 @@ function displayDogInfo() {
 
 
 $(document).on("click", "searchImage", function () {
+    var dog = $("dog-input").val();
+    dogs.push(dog);
     var state = $(this).attr("data-state");
     if (state == still) {
         $(this).attr("src", $(this).data("animated"));
