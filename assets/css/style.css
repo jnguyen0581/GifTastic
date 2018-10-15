@@ -9,6 +9,8 @@ body {
     background: url("../image/puppy.jpg");
     font-size: 18px;
     font-family: Arial, Helvetica, sans-serif; 
+    padding: 15px;
+    margin: 75px;
 }
 
 form {

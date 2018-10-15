@@ -8,7 +8,7 @@ renderButtons();
 $(document).on("click", ".dog-btn", function() {
 
     var dog = $(this).attr("data-name");
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + dog + "&api_key=SwA3d1i26PVpc3LKmwuGOXar64zMN5uE&limit=10";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + dog + "&api_key=SwA3d1i26PVpc3LKmwuGOXar64zMN5uE&limit=5";
 
     $.ajax({
         url: queryURL,
@@ -38,11 +38,11 @@ $(document).on("click", ".dog-btn", function() {
                 $("#gifs-appear-here").prepend(dogDiv);
             }
         });
-});
+
 
 
 $(".movement").on("click", function () {
-    console.log("button works");
+    // console.log("button works");
     // var dog = $("dog-input").val();
     // dogs.push(dog);
     var state = $(this).attr("data-state");
@@ -54,7 +54,7 @@ $(".movement").on("click", function () {
         $(this).attr("data-state", "still");
     }
 });
-
+});
 
 function renderButtons() {
     $("#buttons-view").empty();
@@ -74,4 +74,3 @@ $("#add-dog").on("click", function (event) {
     renderButtons();
 });
 });
-
